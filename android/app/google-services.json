@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300451659202",
+    "project_id": "wirdak-5656",
+    "storage_bucket": "wirdak-5656.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300451659202:android:79ca3b6cb06215b2e22a5b",
+        "android_client_info": {
+          "package_name": "com.example.wirdak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyaKYPFzW68molI1zA6CTBNDye5gEDGO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
