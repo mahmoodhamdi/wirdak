@@ -37,6 +37,18 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+    flavorDimensions "default"
+productFlavors {
+    production {
+        dimension "default"
+        resValue "string", "app_name", "Wirdak"
+    }
+    development {
+        dimension "default"
+        applicationIdSuffix ".dev"
+        resValue "string", "app_name", "Wirdak Dev"
+    }
+}
 }
 
 flutter {
