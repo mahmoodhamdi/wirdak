@@ -1,0 +1,30 @@
+class TextStrings {
+  static const String fajr = "الفجر";
+  static const String sunrise = "الشروق";
+  static const String dhuhr = "الظهر";
+  static const String asr = "العصر";
+  static const String maghrib = "المغرب";
+  static const String isha = "العشاء";
+  static const String jummah = "الجمعة";
+  static const String jumua = "جمعة";
+  static const String all = "جميع العبادات";
+  static const String prayerTimes = "مواقيت الصلاة";
+  static const String morningPrayer = "أذكار الصباح";
+  static const String eveningPrayer = "أذكار المساء";
+  static const String sleepPrayer = "أذكار النوم";
+  static const String allPrayers = "جميع الأدعية";
+  static const String pray = "التسبيح";
+  static const String randomPrayers = "أذكار متنوعة";
+  static const String nearbyPrayers = "اقرب المساجد لك";
+  static const String prayerTime = "وقت الصلاة";
+  static const String location = "المكان";
+  static const String remainingTime = "الوقت المتبقي";
+  static const String refresh = "تحديث الموقع";
+  static const String favorites = "المفضلة";
+  static const String settings = "الإعدادات";
+  static const String language = "اللغة";
+  static const String arabic = "العربية";
+  static const String english = "English";
+  static const String changeLanguage = "تغيير اللغة";
+  static const String changeLanguageMessage = "هل تريد تغيير اللغة؟";
+}
