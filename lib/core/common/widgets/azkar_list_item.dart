@@ -19,7 +19,7 @@ class AzkarListItem extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(16),
         decoration: ShapeDecoration(
-          color: TColors.gray300,
+          color: TColors.gray100,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         child: Align(
