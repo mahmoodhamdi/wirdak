@@ -22,6 +22,7 @@ class TColors {
   static const Color skyBlue = Color(0xFFBEE8F1);
   static const Color deepBlue = Color(0xFF19699D);
   static const Color navyBlue = Color(0xFF1B6180);
+  static const Color darkBlue = Color(0x8E005772);
 
   // Team Colors
   static const Color teamLightSelected = Color(0xFF666666);
