@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 889),
       minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) => MaterialApp(
+       builder: (_, child) => MaterialApp(
         theme: TTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         locale: const Locale('ar'),
