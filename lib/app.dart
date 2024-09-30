@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wirdak/core/utils/theme/theme.dart';
+import 'package:wirdak/features/home/presentation/views/home_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,16 +14,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => MaterialApp(
+        theme: TTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         locale: const Locale('ar'),
         localizationsDelegates: _localizationsDelegates,
         supportedLocales: _supportedLocales,
         builder: (context, child) =>
             _buildDirectionalityWrapper(context, child),
-        home: const Scaffold(
-            body: Center(
-                child:
-                    Text('اللغة العربية - Arabic'))), // Placeholder home widget
+        home: const HomeView(), // Placeholder home widget
       ),
     );
   }
