@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
         builder: (context, child) =>
             _buildDirectionalityWrapper(context, child),
         home: const Scaffold(
-            body: Center(child: Text('Home Page'))), // Placeholder home widget
+            body: Center(
+                child:
+                    Text('اللغة العربية - Arabic'))), // Placeholder home widget
       ),
     );
   }
