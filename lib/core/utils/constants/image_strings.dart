@@ -3,7 +3,18 @@ class ImageStrings {
   static const String stopwatch = 'assets/images/stopwatch.png';
   static const String up = 'assets/svgs/up.svg';
   static const String down = 'assets/svgs/down.svg';
+  static const String masaa = 'assets/svgs/masaa.svg';
+  static const String mosqueSvg = 'assets/svgs/material-symbols_mosque.svg';
+  static const String favorites = 'assets/svgs/wpf_like.svg';
 
+  static const String doaaa = "assets/svgs/do3aa.svg";
+  static const String calendar = "assets/svgs/calendar-svgrepo-com.svg";
+
+  static const String sabah = "assets/svgs/sabah.svg";
+  static const String prayerBeads = "assets/svgs/prayer-beads-svgrepo-com.svg";
+  static const String noteBook = "assets/svgs/note-book-svgrepo-com.svg";
+  static const String prayerFajr =
+      "assets/svgs/material-symbols_prayer-times-rounded.svg";
   static const String solarShare = "assets/svgs/solar_share-bold.svg";
   static const String iconMosqueLight = "assets/svgs/icon-mosque-light.svg";
 
