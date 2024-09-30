@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
 import 'package:wirdak/core/utils/spacing.dart';
 import 'package:wirdak/features/home/presentation/widgets/features_list_item.dart';
+import 'package:wirdak/features/reading_azkar/presentation/views/all_azkar_view.dart';
 
 class FeaturesList extends StatelessWidget {
   const FeaturesList({
@@ -36,14 +37,23 @@ class FeaturesList extends StatelessWidget {
           ],
         ),
         verticalSpace(20),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            FeaturesListItem(
-                title: "أذكار متنوعة", imagePath: ImageStrings.noteBook),
-            FeaturesListItem(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AllAzkarView(),
+                    ));
+              },
+              child: const FeaturesListItem(
+                  title: "أذكار متنوعة", imagePath: ImageStrings.noteBook),
+            ),
+            const FeaturesListItem(
                 title: "أقرب المساجد", imagePath: ImageStrings.mosqueSvg),
-            FeaturesListItem(
+            const FeaturesListItem(
                 title: "المفضلة", imagePath: ImageStrings.favorites),
           ],
         )
