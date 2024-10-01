@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wirdak/core/common/models/azkar_model.dart';
 import 'package:wirdak/core/common/widgets/ziker_actions.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
-import 'package:wirdak/core/utils/spacing.dart';
+import 'package:wirdak/core/utils/helpers/spacing.dart';
 
 class ZikerCard extends StatelessWidget {
   final ZikerModel ziker;

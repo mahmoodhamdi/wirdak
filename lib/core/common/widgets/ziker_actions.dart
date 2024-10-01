@@ -5,7 +5,7 @@ import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
 import 'package:wirdak/core/common/cubits/ziker_cubit.dart';
 import 'package:wirdak/core/common/models/azkar_model.dart';
 import 'package:wirdak/core/common/widgets/ziker_thwab.dart';
-import 'package:wirdak/core/utils/spacing.dart';
+import 'package:wirdak/core/utils/helpers/spacing.dart';
 
 class ZikerActions extends StatefulWidget {
   final ZikerModel ziker;

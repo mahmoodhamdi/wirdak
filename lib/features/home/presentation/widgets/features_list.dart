@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
-import 'package:wirdak/core/utils/spacing.dart';
+import 'package:wirdak/core/utils/helpers/spacing.dart';
 import 'package:wirdak/features/home/presentation/widgets/features_list_item.dart';
 import 'package:wirdak/features/reading_azkar/presentation/views/all_azkar_view.dart';
 import 'package:wirdak/features/reading_azkar/presentation/views/favourite_view.dart';
