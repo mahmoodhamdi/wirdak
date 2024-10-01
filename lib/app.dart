@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
 import 'package:wirdak/core/utils/theme/theme.dart';
 import 'package:wirdak/features/home/presentation/views/home_view.dart';
 
@@ -12,15 +14,18 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 889),
       minTextAdapt: true,
-       builder: (_, child) => MaterialApp(
-        theme: TTheme.lightTheme,
-        debugShowCheckedModeBanner: false,
-        locale: const Locale('ar'),
-        localizationsDelegates: _localizationsDelegates,
-        supportedLocales: _supportedLocales,
-        builder: (context, child) =>
-            _buildDirectionalityWrapper(context, child),
-        home: const HomeView(), // Placeholder home widget
+      builder: (_, child) => BlocProvider(
+        create: (context) => FavoritesCubit(),
+        child: MaterialApp(
+          theme: TTheme.lightTheme,
+          debugShowCheckedModeBanner: false,
+          locale: const Locale('ar'),
+          localizationsDelegates: _localizationsDelegates,
+          supportedLocales: _supportedLocales,
+          builder: (context, child) =>
+              _buildDirectionalityWrapper(context, child),
+          home: const HomeView(), // Placeholder home widget
+        ),
       ),
     );
   }

@@ -16,7 +16,7 @@ class ZikerView extends StatelessWidget {
       body: ListView.builder(
         itemCount: zikerList.length,
         itemBuilder: (context, index) {
-          return ZikerCard(ziker: zikerList[index]);
+          return ZikerCard(isFavorite: false, ziker: zikerList[index]);
         },
       ),
     );

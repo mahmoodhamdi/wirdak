@@ -1,4 +1,6 @@
-class ZikerModel {
+import 'package:equatable/equatable.dart';
+
+class ZikerModel extends Equatable {
   final int id;
   final String text;
   final int count;
@@ -28,4 +30,10 @@ class ZikerModel {
       'filename': filename,
     };
   }
+
+  @override
+  List<Object?> get props => [id, text, count, filename];
+
+  @override
+  bool get stringify => true; // Optional for better debugging
 }
