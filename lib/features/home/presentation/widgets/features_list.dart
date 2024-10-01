@@ -3,6 +3,7 @@ import 'package:wirdak/core/utils/constants/image_strings.dart';
 import 'package:wirdak/core/utils/spacing.dart';
 import 'package:wirdak/features/home/presentation/widgets/features_list_item.dart';
 import 'package:wirdak/features/reading_azkar/presentation/views/all_azkar_view.dart';
+import 'package:wirdak/features/reading_azkar/presentation/views/favourite_view.dart';
 
 class FeaturesList extends StatelessWidget {
   const FeaturesList({
@@ -40,21 +41,28 @@ class FeaturesList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AllAzkarView(),
-                    ));
-              },
-              child: const FeaturesListItem(
-                  title: "أذكار متنوعة", imagePath: ImageStrings.noteBook),
-            ),
+            FeaturesListItem(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AllAzkarView(),
+                      ));
+                },
+                title: "أذكار متنوعة",
+                imagePath: ImageStrings.noteBook),
             const FeaturesListItem(
                 title: "أقرب المساجد", imagePath: ImageStrings.mosqueSvg),
-            const FeaturesListItem(
-                title: "المفضلة", imagePath: ImageStrings.favorites),
+            FeaturesListItem(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FavoritesView(),
+                      ));
+                },
+                title: "المفضلة",
+                imagePath: ImageStrings.favorites),
           ],
         )
       ],

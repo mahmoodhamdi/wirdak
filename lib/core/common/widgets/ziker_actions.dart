@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
 import 'package:wirdak/core/common/cubits/ziker_cubit.dart';
 import 'package:wirdak/core/common/models/azkar_model.dart';
 import 'package:wirdak/core/common/widgets/ziker_thwab.dart';
 import 'package:wirdak/core/utils/spacing.dart';
 
-class ZikerActions extends StatelessWidget {
+class ZikerActions extends StatefulWidget {
   final ZikerModel ziker;
+  bool isFavorite;
+  ZikerActions({
+    super.key,
+    required this.ziker,
+    required this.isFavorite,
+  });
 
-  const ZikerActions({super.key, required this.ziker});
+  @override
+  State<ZikerActions> createState() => _ZikerActionsState();
+}
 
+class _ZikerActionsState extends State<ZikerActions> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ZikerCubit(ziker.count),
+      create: (_) => ZikerCubit(widget.ziker.count),
       child: BlocBuilder<ZikerCubit, ZikerState>(
         builder: (context, state) {
           return Container(
@@ -41,11 +51,20 @@ class ZikerActions extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
+                        final cubit = context.read<FavoritesCubit>();
+                        if (widget.isFavorite) {
+                          cubit.removeFromFavorites(widget.ziker);
+                        } else {
+                          cubit.addToFavorites(widget.ziker);
+                        }
                         context.read<ZikerCubit>().toggleFavorite();
+                        setState(() {
+                          widget.isFavorite = !widget.isFavorite;
+                        });
                       },
                       iconSize: 24,
                       icon: Icon(
-                        state.isFavorite
+                        widget.isFavorite
                             ? Icons.favorite
                             : Icons.favorite_border,
                         color: const Color(0xFF005773),

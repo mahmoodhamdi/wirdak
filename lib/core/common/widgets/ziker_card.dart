@@ -8,8 +8,8 @@ import 'package:wirdak/core/utils/spacing.dart';
 
 class ZikerCard extends StatelessWidget {
   final ZikerModel ziker;
-
-  const ZikerCard({super.key, required this.ziker});
+  final bool isFavorite;
+  const ZikerCard({super.key, required this.ziker, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class ZikerCard extends StatelessWidget {
             SvgPicture.asset(ImageStrings.down),
             verticalSpace(16),
             
-            ZikerActions(ziker: ziker),
+            ZikerActions(isFavorite: isFavorite, ziker: ziker),
           ],
         ),
       ),
