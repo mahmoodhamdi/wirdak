@@ -8,6 +8,7 @@ import 'package:wirdak/features/prayer_timer/presentation/views/prayer_times_vie
 import 'package:wirdak/features/reading_azkar/presentation/views/all_azkar_view.dart';
 import 'package:wirdak/features/reading_azkar/presentation/views/favourite_view.dart';
 import 'package:wirdak/features/reading_azkar/presentation/views/ziker_view.dart';
+import 'package:wirdak/features/settings/presentation/views/settings_view.dart';
 
 class FeaturesList extends StatelessWidget {
   const FeaturesList({
@@ -73,8 +74,16 @@ class FeaturesList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const FeaturesListItem(
-                title: "التقويم الهجري", imagePath: ImageStrings.calendar),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsView()),
+                );
+              },
+              child: const FeaturesListItem(
+                  title: "التقويم الهجري", imagePath: ImageStrings.calendar),
+            ),
             const FeaturesListItem(
                 title: "التسبيح", imagePath: ImageStrings.prayerBeads),
             GestureDetector(
