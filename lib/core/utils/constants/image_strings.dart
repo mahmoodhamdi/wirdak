@@ -43,4 +43,13 @@ class ImageStrings {
   static const String iconSunWhite = "assets/svgs/radix-icons_moon_white.svg";
 
   static const String iconMoon = "assets/svgs/radix-icons_moon.svg";
+
+  static const String backgroundMasjid =
+"assets/images/backgroundmasjid.png";
+
+  static const String volume =
+"assets/svgs/fluent_speaker-2-32-filled.svg";
+
+  static const String volumeMute =
+"assets/svgs/mingcute_volume-mute-fill.svg";
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wirdak/core/utils/constants/colors.dart';
 
 import 'date_widget.dart'; // Import the DateWidget
 import 'location_widget.dart'; // Import the LocationWidget
@@ -8,9 +9,10 @@ class LocationAndDateHeader extends StatelessWidget {
   final String hijriDate;
   final String locationLabel;
   final String location;
-
+  final Color color;
   const LocationAndDateHeader({
     super.key,
+    this.color = TColors.gray800,
     required this.gregorianDate,
     required this.hijriDate,
     required this.locationLabel,
@@ -25,10 +27,12 @@ class LocationAndDateHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           DateWidget(
+            color: color,
             gregorianDate: gregorianDate,
             hijriDate: hijriDate,
           ),
           LocationWidget(
+            color: color,
             label: locationLabel,
             location: location,
           ),

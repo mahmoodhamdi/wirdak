@@ -5,11 +5,12 @@ import 'package:wirdak/core/utils/constants/colors.dart';
 class DateWidget extends StatelessWidget {
   final String gregorianDate;
   final String hijriDate;
-
+  final Color color;
   const DateWidget({
     super.key,
     required this.gregorianDate,
     required this.hijriDate,
+    this.color = TColors.gray800,
   });
 
   @override
@@ -30,7 +31,7 @@ class DateWidget extends StatelessWidget {
         Text(
           hijriDate,
           style: TextStyle(
-            color: TColors.gray800,
+            color: color,
             fontSize: 15.sp,
             fontWeight: FontWeight.w300,
           ),

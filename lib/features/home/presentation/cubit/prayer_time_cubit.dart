@@ -3,7 +3,7 @@ import 'prayer_time_state.dart';
 
 class PrayerTimeCubit extends Cubit<PrayerTimeState> {
   PrayerTimeCubit()
-      : super(PrayerTimeState(prayerTimes: [
+      : super(const PrayerTimeState(prayerTimes: [
           {
             'name': 'الفجر',
             'time': '04:30',
