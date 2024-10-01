@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wirdak/core/common/widgets/location_and_date_header.dart';
 import 'package:wirdak/core/utils/constants/colors.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
-import 'package:wirdak/core/utils/spacing.dart';
+import 'package:wirdak/core/utils/helpers/spacing.dart';
 import 'package:wirdak/features/home/presentation/cubit/prayer_time_cubit.dart';
 import 'package:wirdak/features/home/presentation/cubit/prayer_time_state.dart';
 import 'package:wirdak/features/home/presentation/widgets/all_prayers_widget.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wirdak/core/utils/constants/colors.dart';
-import 'package:wirdak/core/utils/spacing.dart';
+import 'package:wirdak/core/utils/helpers/spacing.dart';
 
 class VerticalPrayerTime extends StatelessWidget {
   final String iconPath;
