@@ -65,6 +65,7 @@ class ZikerCard extends StatelessWidget {
             verticalSpace(16),
             SvgPicture.asset(ImageStrings.down),
             verticalSpace(16),
+            
             ZikerActions(ziker: ziker),
           ],
         ),
