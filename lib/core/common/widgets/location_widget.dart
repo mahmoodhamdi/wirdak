@@ -5,11 +5,11 @@ import 'package:wirdak/core/utils/constants/colors.dart';
 class LocationWidget extends StatelessWidget {
   final String label;
   final String location;
-
+  final Color color;
   const LocationWidget({
     super.key,
     required this.label,
-    required this.location,
+    required this.location,  this. color=TColors.gray800,
   });
 
   @override
@@ -30,7 +30,7 @@ class LocationWidget extends StatelessWidget {
         Text(
           location,
           style: TextStyle(
-            color: TColors.gray800,
+            color: color,
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),

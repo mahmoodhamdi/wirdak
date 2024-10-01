@@ -6,7 +6,7 @@ class ZikerModel extends Equatable {
   final int count;
   final String filename;
 
-  ZikerModel({
+  const ZikerModel({
     required this.id,
     required this.text,
     required this.count,
