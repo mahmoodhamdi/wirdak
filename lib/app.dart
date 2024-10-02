@@ -5,11 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
 import 'package:wirdak/core/router/router.dart';
 import 'package:wirdak/core/utils/theme/theme.dart';
-import 'package:wirdak/features/home/presentation/views/home_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: _supportedLocales,
           builder: (context, child) =>
               _buildDirectionalityWrapper(context, child),
-         ),
+        ),
       ),
     );
   }

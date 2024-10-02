@@ -1,4 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'dart:developer';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:wirdak/core/common/models/azkar_model.dart';
 
@@ -13,22 +15,22 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   void addToFavorites(ZikerModel ziker) {
     if (!_favorites.contains(ziker)) {
       _favorites.add(ziker);
-      print('Added to favorites: ${ziker.id}');
-      print('Current favorites: ${_favorites.map((e) => e.id)}');
+      log('Added to favorites: ${ziker.id}');
+      log('Current favorites: ${_favorites.map((e) => e.id)}');
       emit(FavoritesState(
           favorites: List.from(_favorites))); // Emit updated state
     } else {
-      print('Ziker already in favorites: ${ziker.id}');
+      log('Ziker already in favorites: ${ziker.id}');
     }
   }
 
   void removeFromFavorites(ZikerModel ziker) {
     if (_favorites.remove(ziker)) {
-      print('Removed from favorites: ${ziker.id}');
+      log('Removed from favorites: ${ziker.id}');
       emit(FavoritesState(
           favorites: List.from(_favorites))); // Emit updated state
     } else {
-      print('Ziker not found in favorites: ${ziker.id}');
+      log('Ziker not found in favorites: ${ziker.id}');
     }
   }
 }
