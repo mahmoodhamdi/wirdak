@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
+import 'package:wirdak/core/router/router.dart';
 import 'package:wirdak/core/utils/theme/theme.dart';
 import 'package:wirdak/features/home/presentation/views/home_view.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (_, child) => BlocProvider(
         create: (context) => FavoritesCubit(),
-        child: MaterialApp(
+        child: MaterialApp.router(
+          routerConfig: router,
           theme: TTheme.lightTheme,
           debugShowCheckedModeBanner: false,
           locale: const Locale('ar'),
@@ -24,8 +26,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: _supportedLocales,
           builder: (context, child) =>
               _buildDirectionalityWrapper(context, child),
-          home: const HomeView(), // Placeholder home widget
-        ),
+         ),
       ),
     );
   }
