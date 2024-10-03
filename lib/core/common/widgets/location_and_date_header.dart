@@ -5,16 +5,14 @@ import 'date_widget.dart'; // Import the DateWidget
 import 'location_widget.dart'; // Import the LocationWidget
 
 class LocationAndDateHeader extends StatelessWidget {
-  final String gregorianDate;
-  final String hijriDate;
+   final String hijriDate;
   final String locationLabel;
   final String location;
   final Color color;
   const LocationAndDateHeader({
     super.key,
     this.color = TColors.gray800,
-    required this.gregorianDate,
-    required this.hijriDate,
+     required this.hijriDate,
     required this.locationLabel,
     required this.location,
   });
@@ -28,7 +26,6 @@ class LocationAndDateHeader extends StatelessWidget {
         children: [
           DateWidget(
             color: color,
-            gregorianDate: gregorianDate,
             hijriDate: hijriDate,
           ),
           LocationWidget(
