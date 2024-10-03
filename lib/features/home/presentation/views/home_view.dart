@@ -33,7 +33,6 @@ class HomeView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: 16.w, vertical: 16.h),
                       child: const LocationAndDateHeader(
-                        gregorianDate: '12 الثلاثاء ديسمبر 2023',
                         hijriDate: 'الأحد ربيع الأول 1445',
                         locationLabel: 'المكان',
                         location: 'القاهرة، مصر',

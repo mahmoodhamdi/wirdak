@@ -9,7 +9,8 @@ class LocationWidget extends StatelessWidget {
   const LocationWidget({
     super.key,
     required this.label,
-    required this.location,  this. color=TColors.gray800,
+    required this.location,
+    this.color = TColors.gray800,
   });
 
   @override
@@ -34,6 +35,8 @@ class LocationWidget extends StatelessWidget {
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

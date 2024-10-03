@@ -3,12 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wirdak/core/utils/constants/colors.dart';
 
 class DateWidget extends StatelessWidget {
-  final String gregorianDate;
   final String hijriDate;
   final Color color;
   const DateWidget({
     super.key,
-    required this.gregorianDate,
     required this.hijriDate,
     this.color = TColors.gray800,
   });
@@ -20,7 +18,7 @@ class DateWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          gregorianDate,
+          'التاريخ الهجري',
           style: TextStyle(
             color: TColors.gray400,
             fontSize: 12.sp,
@@ -35,6 +33,8 @@ class DateWidget extends StatelessWidget {
             fontSize: 15.sp,
             fontWeight: FontWeight.w300,
           ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
