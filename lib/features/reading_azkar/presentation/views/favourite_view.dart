@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
+import 'package:wirdak/core/common/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:wirdak/core/common/widgets/custom_app_bar.dart';
 import 'package:wirdak/core/common/widgets/ziker_card.dart';
 

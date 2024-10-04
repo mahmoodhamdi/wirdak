@@ -1,4 +1,4 @@
-import 'package:wirdak/features/prayer_timer/models/prayer_time_info.dart';
+import 'package:wirdak/core/common/models/prayer_time_info.dart';
 
 abstract class PrayerTimesState {}
 

@@ -5,8 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hijri/hijri_calendar.dart';
-import 'package:wirdak/features/prayer_timer/models/prayer_time_info.dart';
-import 'package:wirdak/features/prayer_timer/presentation/cubits/prayer_times_cubit/prayer_times_state.dart';
+import 'package:wirdak/core/common/cubits/prayer_times_cubit/prayer_times_state.dart';
+import 'package:wirdak/core/common/models/prayer_time_info.dart';
+import 'package:wirdak/core/utils/formatters/formatter.dart';
 
 class PrayerTimesCubit extends Cubit<PrayerTimesState> {
   PrayerTimesCubit() : super(PrayerTimesInitial());
@@ -17,11 +18,11 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
       final position = await _determinePosition();
       final location = await _getLocationName(position);
       final prayerTimes = await _getPrayerTimes(position);
-      final nextPrayerInfo = _calculateNextPrayer(prayerTimes);
+      final nextPrayerInfo = _calculateNextPrayer(prayerTimes.prayerTimes);
 
       final prayerTimeInfo = PrayerTimeInfo(
           nextPrayerIndex: nextPrayerInfo.index,
-          prayerTimes: prayerTimes,
+          prayerTimes: prayerTimes.prayersStringTimes,
           location: location,
           currentTime: DateTime.now(),
           nextPrayer: nextPrayerInfo.name,
@@ -125,22 +126,44 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
     return await Geolocator.getCurrentPosition();
   }
 
-  Future<List<DateTime>> _getPrayerTimes(Position position) async {
+  Future<_GetPrayerTimes> _getPrayerTimes(Position position) async {
     log('Prayer Times Calculation');
     final coordinates = Coordinates(position.latitude, position.longitude);
     final params = CalculationMethod.egyptian.getParameters();
     params.madhab = Madhab.hanafi;
     final prayerTimes = PrayerTimes.today(coordinates, params);
 
-    return [
-      prayerTimes.fajr.add(const Duration(minutes: 60)),
-      prayerTimes.sunrise.add(const Duration(minutes: 60)),
-      prayerTimes.dhuhr.add(const Duration(minutes: 60)),
-      prayerTimes.asr.add(const Duration(minutes: 60)),
-      prayerTimes.maghrib.add(const Duration(minutes: 60)),
-      prayerTimes.isha.add(const Duration(minutes: 60))
-    ];
+    return _GetPrayerTimes(
+      prayerTimes: [
+        prayerTimes.fajr,
+        prayerTimes.sunrise,
+        prayerTimes.dhuhr,
+        prayerTimes.asr,
+        prayerTimes.maghrib,
+        prayerTimes.isha,
+      ],
+      prayersStringTimes: [
+        TFormatter.formatTime(
+            prayerTimes.fajr),
+        TFormatter.formatTime(
+            prayerTimes.sunrise),
+        TFormatter.formatTime(
+            prayerTimes.dhuhr),
+        TFormatter.formatTime(prayerTimes.asr),
+        TFormatter.formatTime(
+            prayerTimes.maghrib),
+        TFormatter.formatTime(prayerTimes.isha)
+      ],
+    );
   }
+}
+
+// helper class
+class _GetPrayerTimes {
+  final List<DateTime> prayerTimes;
+  final List<String> prayersStringTimes;
+  _GetPrayerTimes(
+      {required this.prayerTimes, required this.prayersStringTimes});
 }
 
 class _NextPrayerInfo {

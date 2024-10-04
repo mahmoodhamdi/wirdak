@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'prayer_time_state.dart';
 
-class PrayerTimeCubit extends Cubit<PrayerTimeState> {
-  PrayerTimeCubit()
-      : super(const PrayerTimeState(prayerTimes: [
+import 'home_state.dart';
+
+class HomeCubit extends Cubit<HomeState> {
+  HomeCubit()
+      : super(const HomeState(prayerTimes: [
           {
             'name': 'الفجر',
             'time': '04:30',
