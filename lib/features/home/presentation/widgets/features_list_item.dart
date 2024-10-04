@@ -17,7 +17,7 @@ class FeaturesListItem extends StatelessWidget {
         children: [
           Container(
             width: 78.w,
-            height: 77.h,
+            
             padding: const EdgeInsets.all(4),
             decoration: ShapeDecoration(
               color: Colors.white,

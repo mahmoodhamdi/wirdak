@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wirdak/core/common/cubits/favorites_cubit.dart';
-import 'package:wirdak/core/common/cubits/ziker_cubit.dart';
+import 'package:wirdak/core/common/cubits/favorites_cubit/favorites_cubit.dart';
+import 'package:wirdak/core/common/cubits/ziker_cubit/ziker_cubit.dart';
 import 'package:wirdak/core/common/models/azkar_model.dart';
 import 'package:wirdak/core/common/widgets/ziker_thwab.dart';
 import 'package:wirdak/core/utils/helpers/spacing.dart';

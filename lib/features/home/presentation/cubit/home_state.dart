@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class PrayerTimeState extends Equatable {
+class HomeState extends Equatable {
   final int? selectedIndex;
   final List<Map<String, String>> prayerTimes;
 
-  const PrayerTimeState({
+  const HomeState({
     this.selectedIndex,
     required this.prayerTimes,
   });
@@ -12,11 +12,11 @@ class PrayerTimeState extends Equatable {
   @override
   List<Object?> get props => [selectedIndex, prayerTimes];
 
-  PrayerTimeState copyWith({
+  HomeState copyWith({
     int? selectedIndex,
     List<Map<String, String>>? prayerTimes,
   }) {
-    return PrayerTimeState(
+    return HomeState(
       selectedIndex: selectedIndex ?? this.selectedIndex,
       prayerTimes: prayerTimes ?? this.prayerTimes,
     );

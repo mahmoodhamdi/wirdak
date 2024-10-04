@@ -1,5 +1,5 @@
 class PrayerTimeInfo {
-  final List<DateTime> prayerTimes;
+  final List<String> prayerTimes;
   final String location;
   final DateTime currentTime;
   final String nextPrayer;

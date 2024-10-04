@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wirdak/core/common/cubits/prayer_times_cubit/prayer_times_cubit.dart';
+import 'package:wirdak/core/common/cubits/prayer_times_cubit/prayer_times_state.dart';
 import 'package:wirdak/core/common/widgets/location_and_date_header.dart';
 import 'package:wirdak/core/utils/constants/colors.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
 import 'package:wirdak/core/utils/helpers/spacing.dart';
-import 'package:wirdak/features/home/presentation/cubit/prayer_time_cubit.dart';
-import 'package:wirdak/features/home/presentation/cubit/prayer_time_state.dart';
+import 'package:wirdak/features/home/presentation/cubit/home_cubit.dart';
 import 'package:wirdak/features/home/presentation/widgets/all_prayers_widget.dart';
 import 'package:wirdak/features/home/presentation/widgets/features_list.dart';
 import 'package:wirdak/features/home/presentation/widgets/vertical_prayer_time.dart';
@@ -17,10 +18,10 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PrayerTimeCubit(),
-      child: BlocBuilder<PrayerTimeCubit, PrayerTimeState>(
+      create: (context) => HomeCubit(),
+      child: BlocBuilder<PrayerTimesCubit, PrayerTimesState>(
         builder: (context, state) {
-          final cubit = context.read<PrayerTimeCubit>();
+          final cubit = context.read<HomeCubit>();
           final selectedPrayer = cubit.getSelectedPrayerInfo();
           final nextPrayer = cubit.getNextPrayerInfo();
 
@@ -32,11 +33,17 @@ class HomeView extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: 16.w, vertical: 16.h),
-                      child: const LocationAndDateHeader(
-                        hijriDate: 'الأحد ربيع الأول 1445',
-                        locationLabel: 'المكان',
-                        location: 'القاهرة، مصر',
-                      ),
+                      child: state is PrayerTimesLoaded
+                          ? LocationAndDateHeader(
+                              hijriDate: state.prayerTimeInfo.hijriDate,
+                              locationLabel: 'المكان',
+                              location: state.prayerTimeInfo.location,
+                            )
+                          : const LocationAndDateHeader(
+                              hijriDate: "...يتم التحميل",
+                              locationLabel: 'المكان',
+                              location: '...يتم التحميل',
+                            ),
                     ),
                     verticalSpace(8),
                     Column(
@@ -59,42 +66,54 @@ class HomeView extends StatelessWidget {
                                     ImageStrings.iconMoon,
                                     ImageStrings.iconSunWhite,
                                     'الفجر',
-                                    '04:30'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[0]
+                                        : ""),
                                 _buildPrayerTime(
                                     context,
                                     1,
                                     ImageStrings.iconSunrise,
                                     ImageStrings.iconSunriseWhite,
                                     'الشروق',
-                                    '05:50'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[1]
+                                        : ""),
                                 _buildPrayerTime(
                                     context,
                                     2,
                                     ImageStrings.iconSunBold,
                                     ImageStrings.iconSunBoldWhite,
                                     'الظهر',
-                                    '11:45'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[2]
+                                        : ""),
                                 _buildPrayerTime(
                                     context,
                                     3,
                                     ImageStrings.iconCloudSun,
                                     ImageStrings.iconCloudSunWhite,
                                     'العصر',
-                                    '02:50'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[3]
+                                        : ""),
                                 _buildPrayerTime(
                                     context,
                                     4,
                                     ImageStrings.iconSunset,
                                     ImageStrings.iconSunsetWhite,
                                     'المغرب',
-                                    '06:30'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[4]
+                                        : ""),
                                 _buildPrayerTime(
                                     context,
                                     5,
                                     ImageStrings.iconMoonOutline,
                                     ImageStrings.iconMoonOutlineWhite,
                                     'العشاء',
-                                    '07:45'),
+                                    state is PrayerTimesLoaded
+                                        ? state.prayerTimeInfo.prayerTimes[5]
+                                        : ""),
                               ],
                             ),
                           ),
@@ -215,9 +234,9 @@ class HomeView extends StatelessWidget {
       iconPathWhite: iconPathWhite,
       title: title,
       time: time,
-      isSelected: context.watch<PrayerTimeCubit>().state.selectedIndex == index,
+      isSelected: context.watch<HomeCubit>().state.selectedIndex == index,
       onTap: () {
-        context.read<PrayerTimeCubit>().selectPrayerTime(index);
+        context.read<HomeCubit>().selectPrayerTime(index);
       },
     );
   }
