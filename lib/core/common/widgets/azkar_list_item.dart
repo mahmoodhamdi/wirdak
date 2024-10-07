@@ -5,9 +5,10 @@ import 'package:wirdak/core/utils/constants/colors.dart';
 class AzkarListItem extends StatelessWidget {
   const AzkarListItem({
     super.key,
+    required this.onPressed,
     required this.azkarCategory,
   });
-
+  final void Function()? onPressed;
   final AzkarCategory azkarCategory;
   @override
   Widget build(BuildContext context) {
@@ -18,17 +19,26 @@ class AzkarListItem extends StatelessWidget {
         color: TColors.gray100,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       ),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Text(
-          azkarCategory.category,
-          style: const TextStyle(
-            color: Color(0xFF1E1E1E),
-            fontSize: 16,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w400,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              azkarCategory.category,
+              style: const TextStyle(
+                color: Color(0xFF1E1E1E),
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
-        ),
+          IconButton(
+              onPressed: onPressed,
+              tooltip: 'Schedule Notification',
+              icon: const Icon(Icons.alarm))
+        ],
       ),
     );
   }
