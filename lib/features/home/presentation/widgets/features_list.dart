@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:wirdak/core/common/models/azkar_category.dart';
+import 'package:wirdak/core/common/widgets/random_ziker_card.dart';
 import 'package:wirdak/core/utils/constants/azkar_data.dart';
 import 'package:wirdak/core/utils/constants/image_strings.dart';
 import 'package:wirdak/core/utils/helpers/spacing.dart';
@@ -69,21 +72,24 @@ class FeaturesList extends StatelessWidget {
           ],
         ),
         verticalSpace(20),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FeaturesListItem(
-                title: "التقويم الهجري", imagePath: ImageStrings.calendar),
-            FeaturesListItem(
-                title: "التسبيح", imagePath: ImageStrings.prayerBeads),
-            FeaturesListItem(
-                title: "جميع الأدعية", imagePath: ImageStrings.doaaa),
-          ],
-        ),
-        verticalSpace(20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ZikerView(
+                      categoryName: "الأدعية",
+                      zikerList: azkarCategories.last.azkarList,
+                    ),
+                  ),
+                );
+              },
+              child: const FeaturesListItem(
+                  title: "الأدعية", imagePath: ImageStrings.doaaa),
+            ),
             FeaturesListItem(
                 onTap: () {
                   Navigator.push(
@@ -94,8 +100,6 @@ class FeaturesList extends StatelessWidget {
                 },
                 title: "أذكار متنوعة",
                 imagePath: ImageStrings.noteBook),
-            const FeaturesListItem(
-                title: "أقرب المساجد", imagePath: ImageStrings.mosqueSvg),
             FeaturesListItem(
                 onTap: () {
                   Navigator.push(
@@ -107,6 +111,11 @@ class FeaturesList extends StatelessWidget {
                 title: "المفضلة",
                 imagePath: ImageStrings.favorites),
           ],
+        ),
+        verticalSpace(20),
+        RandomZikerCard(
+          ziker: azkarCategories.last.azkarList[
+              Random().nextInt(azkarCategories.last.azkarList.length)],
         )
       ],
     );
