@@ -11,6 +11,61 @@ import 'package:wirdak/core/utils/formatters/formatter.dart';
 
 class PrayerTimesCubit extends Cubit<PrayerTimesState> {
   PrayerTimesCubit() : super(PrayerTimesInitial());
+  // Prayer names in Arabic
+  final List<String> prayerNames = [
+    'الفجر',
+    'الشروق',
+    'الظهر',
+    'العصر',
+    'المغرب',
+    'العشاء'
+  ];
+  void selectPrayerTime(int index) {
+    if (state is PrayerTimesLoaded) {
+      final currentState = state as PrayerTimesLoaded;
+      emit(currentState.copyWith(selectedIndex: index));
+    }
+  }
+
+  Map<String, String> getSelectedPrayerInfo() {
+    if (state is PrayerTimesLoaded) {
+      final currentState = state as PrayerTimesLoaded;
+      final selectedIndex = currentState.selectedIndex ??
+          currentState.prayerTimeInfo.nextPrayerIndex;
+
+      return {
+        'name': prayerNames[selectedIndex],
+        'time': currentState.prayerTimeInfo.prayerTimes[selectedIndex],
+        'period': _determinePeriod(
+            currentState.prayerTimeInfo.prayerTimes[selectedIndex]),
+        'next': prayerNames[(selectedIndex + 1) % 6]
+      };
+    }
+    return {'name': '', 'time': '', 'period': '', 'next': ''};
+  }
+
+  Map<String, String> getNextPrayerInfo() {
+    if (state is PrayerTimesLoaded) {
+      final currentState = state as PrayerTimesLoaded;
+      final selectedIndex = currentState.selectedIndex ??
+          currentState.prayerTimeInfo.nextPrayerIndex;
+      final nextIndex = (selectedIndex + 1) % 6;
+
+      return {
+        'name': prayerNames[nextIndex],
+        'time': currentState.prayerTimeInfo.prayerTimes[nextIndex],
+        'period': _determinePeriod(
+            currentState.prayerTimeInfo.prayerTimes[nextIndex]),
+        'next': prayerNames[(nextIndex + 1) % 6]
+      };
+    }
+    return {'name': '', 'time': '', 'period': '', 'next': ''};
+  }
+
+  String _determinePeriod(String time) {
+    final hour = int.parse(time.split(':')[0]);
+    return (hour >= 12) ? 'مساءً' : 'صباحاً';
+  }
 
   Future<void> loadPrayerTimes() async {
     emit(PrayerTimesLoading());
@@ -31,7 +86,11 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
           timeUntilNextPrayerFormatted:
               timeUntilNextPrayer(nextPrayerInfo.duration));
 
-      emit(PrayerTimesLoaded(prayerTimeInfo: prayerTimeInfo));
+      emit(PrayerTimesLoaded(
+        prayerTimeInfo: prayerTimeInfo,
+        selectedIndex:
+            nextPrayerInfo.index, // Set initial selection to next prayer
+      ));
     } catch (e) {
       emit(PrayerTimesError(e.toString()));
     }
@@ -143,15 +202,11 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
         prayerTimes.isha,
       ],
       prayersStringTimes: [
-        TFormatter.formatTime(
-            prayerTimes.fajr),
-        TFormatter.formatTime(
-            prayerTimes.sunrise),
-        TFormatter.formatTime(
-            prayerTimes.dhuhr),
+        TFormatter.formatTime(prayerTimes.fajr),
+        TFormatter.formatTime(prayerTimes.sunrise),
+        TFormatter.formatTime(prayerTimes.dhuhr),
         TFormatter.formatTime(prayerTimes.asr),
-        TFormatter.formatTime(
-            prayerTimes.maghrib),
+        TFormatter.formatTime(prayerTimes.maghrib),
         TFormatter.formatTime(prayerTimes.isha)
       ],
     );
