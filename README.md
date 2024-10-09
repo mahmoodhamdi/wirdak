@@ -165,3 +165,18 @@ For any questions or suggestions, feel free to reach out:
 
 - **Email**: <hmdy7486@gmail.com>
 - **LinkedIn**: [mahmoodhamdi](https://www.linkedin.com/in/mahmoud-hamdy-alashwah)
+
+---
+
+### 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Quote
+
+> "مَن غَدَا إلى المَسْجِدِ ورَاحَ، أعَدَّ اللَّهُ له نُزُلَهُ مِنَ الجَنَّةِ كُلَّما غَدَا أوْ رَاحَ."
+> صحيح البخاري
