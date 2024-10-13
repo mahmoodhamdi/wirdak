@@ -64,14 +64,14 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
 
   String _determinePeriod(String time) {
     final hour = int.parse(time.split(':')[0]);
-    return (hour >= 12) ? 'مساءً' : 'صباحاً';
+    return (hour <= 12) ? 'مساءً' : 'صباحاً';
   }
 
   Future<void> loadPrayerTimes() async {
     emit(PrayerTimesLoading());
     try {
-      final position = await _determinePosition();
-      final location = await _getLocationName(position);
+      final position = await determinePosition();
+      final location = await getLocationName(position);
       final prayerTimes = await _getPrayerTimes(position);
       final nextPrayerInfo = _calculateNextPrayer(prayerTimes.prayerTimes);
 
@@ -96,7 +96,7 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
     }
   }
 
-  Future<String> _getLocationName(Position position) async {
+ static Future<String> getLocationName(Position position) async {
     try {
       final placemarks = await placemarkFromCoordinates(
         position.latitude,
@@ -163,7 +163,7 @@ class PrayerTimesCubit extends Cubit<PrayerTimesState> {
     return DateTime.now().add(Duration(hours: hours, minutes: minutes));
   }
 
-  Future<Position> _determinePosition() async {
+  Future<Position> determinePosition() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return Future.error('Location services are disabled.');

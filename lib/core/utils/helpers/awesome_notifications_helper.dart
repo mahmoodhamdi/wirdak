@@ -14,6 +14,7 @@ class AwesomeNotificationsHelper {
               channelDescription:
                   'Notification tests as scheduled notifications',
               playSound: true,
+              soundSource: 'resource://raw/yaamsallyallaelnaby',
               onlyAlertOnce: false,
               groupAlertBehavior: GroupAlertBehavior.All,
               importance: NotificationImportance.High,
@@ -21,6 +22,7 @@ class AwesomeNotificationsHelper {
               ledColor: Colors.deepPurple),
           // repeat scheduled notifications
           NotificationChannel(
+              soundSource: 'resource://raw/yaamsallyallaelnaby',
               channelKey: 'repeatMinute',
               channelName: 'Repeat Minute Notifications',
               channelDescription:
@@ -32,6 +34,7 @@ class AwesomeNotificationsHelper {
               defaultColor: Colors.deepPurple,
               ledColor: Colors.deepPurple),
           NotificationChannel(
+              soundSource: 'resource://raw/yaamsallyallaelnaby',
               channelKey: 'repeatHour',
               channelName: 'Repeat Hour Notifications',
               channelDescription:
@@ -43,6 +46,7 @@ class AwesomeNotificationsHelper {
               defaultColor: Colors.deepPurple,
               ledColor: Colors.deepPurple),
           NotificationChannel(
+              soundSource: 'resource://raw/yaamsallyallaelnaby',
               channelKey: 'repeatDay',
               channelName: 'Repeat Day Notifications',
               channelDescription:
@@ -77,6 +81,7 @@ class AwesomeNotificationsHelper {
     await AwesomeNotifications().createNotification(
       schedule: NotificationCalendar(
         second: 1,
+
         repeats: true, // Repeats every minute
         allowWhileIdle: true,
       ),
@@ -85,6 +90,7 @@ class AwesomeNotificationsHelper {
         channelKey: 'repeatMinute',
         title: title,
         body: message,
+
         notificationLayout: NotificationLayout.BigText,
       ),
     );
@@ -108,6 +114,7 @@ class AwesomeNotificationsHelper {
         id: createUniqueId(), // Generates a unique ID for each notification
         channelKey: 'repeatHour',
         title: title,
+
         body: message,
         notificationLayout: NotificationLayout.BigText,
       ),
@@ -172,6 +179,7 @@ class AwesomeNotificationsHelper {
           break;
         case RepeatInterval.day:
           channelKey = 'repeatDay';
+
           schedule = NotificationCalendar(
             hour: scheduledDateTime.hour,
             minute: scheduledDateTime.minute,
